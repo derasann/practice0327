@@ -9,7 +9,11 @@ current_dir = os.getcwd()
 st.title('好きな映画')
 
 st.write('Display Image')
-img_path = '/Users/onoderakyoko/0327/topgun.jpg'  
+#img_path = '/Users/onoderakyoko/0327/topgun.jpg'  
+#img = Image.open(img_path)
+
+# 相対パスの例
+img_path = "topgun.jpg"
 img = Image.open(img_path)
 st.image(img, caption='マーベリック！', use_column_width=False, width=300)
 
