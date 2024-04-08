@@ -3,12 +3,13 @@ from PIL import Image
 import os
 import toml
 
-
 # TOMLファイルからパスワード等の情報を読み込む
-config = toml.load("config.toml")
-password = os.environ.get("DB_TOKEN")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+toml_file_path = os.path.join(current_dir, "main.toml")
+config = toml.load(toml_file_path)
 
 # ユーザー入力と比較してアクセス制限をかける
+password = config["auth"]["password"]
 if st.text_input("Password") != password:
     st.error("Invalid password")
     st.stop()
@@ -16,14 +17,12 @@ if st.text_input("Password") != password:
 # パスワードが正しい場合はアプリの通常の処理を実行する
 st.title("Welcome to the app!")
 
-
 # カレントディレクトリを取得して表示（デバッグ用）
 current_dir = os.getcwd()
 #st.write('Current directory:', current_dir)
 
 # ここから前のデータ
 st.title('好きな映画')
-
 st.write('Display Image')
 
 # 相対パスの例

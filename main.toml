@@ -1,0 +1,10 @@
+# 認証情報
+[auth]
+password = "${DB_TOKEN}"
+
+# データベース接続情報  
+[database]
+host = "localhost"
+port = 5432
+user = "myuser"
+password = "${DB_USERNAME}"
