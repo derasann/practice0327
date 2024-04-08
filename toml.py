@@ -3,14 +3,18 @@ from PIL import Image
 import os
 import toml
 
+
+# ユーザー名とパスワードの入力
+username = st.text_input("Username")
+password = st.text_input("Password", type="password")
+
 # TOMLファイルからパスワード等の情報を読み込む
 current_dir = os.path.dirname(os.path.abspath(__file__))
 toml_file_path = os.path.join(current_dir, "main.toml")
 config = toml.load(toml_file_path)
 
-# ユーザー名とパスワードの入力
-username = st.text_input("Username")
-password = st.text_input("Password")
+# デバッグ用にconfig変数の内容を確認する
+print(config)
 
 # ユーザー入力と比較してアクセス制限をかける
 if username == config["database"]["user"] and password == config["auth"]["password"]:
@@ -18,7 +22,6 @@ if username == config["database"]["user"] and password == config["auth"]["passwo
 else:
     st.error("Invalid username or password")
     st.stop()
-＝＝
 
 # カレントディレクトリを取得して表示（デバッグ用）
 current_dir = os.getcwd()
