@@ -12,8 +12,8 @@ config = toml.load(toml_file_path)
 entered_password = st.text_input("Password", type="password")
 
 # ユーザー入力と比較してアクセス制限をかける
-#auth_token = st.secrets["auth_token"]
-auth_token = st.secrets.auth_key
+auth_token = st.secrets["auth_key"]
+#auth_token = st.secrets.auth_key
 if entered_password.strip() == auth_token:
     # 認証成功時の処理
     st.title("Welcome to the app!")
